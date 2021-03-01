@@ -1,0 +1,9 @@
+.page__content {
+    min-width: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: #000000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  

@@ -1,0 +1,7 @@
+.infotooltip_opened {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+}

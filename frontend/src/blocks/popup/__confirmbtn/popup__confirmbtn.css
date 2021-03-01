@@ -1,0 +1,32 @@
+.popup__confirmbtn {
+  width: 358px;
+  height: 50px;
+  color:#ffffff;
+  font-family: 'Inter', ‘Arial’, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: #000000;
+  align-self: center;
+  margin-top: 0px;
+  margin-bottom: 36px;
+}
+
+.popup__confirmbtn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 560px) {
+  .popup__confirmbtn {
+    width: calc(100% - 40px);
+    height: 40px;
+    margin: 31px 20px 30px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

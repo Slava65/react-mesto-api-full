@@ -1,0 +1,31 @@
+.popup__refresh-ava-btn {
+  width: 358px;
+  height: 50px;
+  color:#ffffff;
+  font-family: 'Inter', ‘Arial’, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: #000000;
+  align-self: center;
+  margin: 28px 36px 36px;
+}
+
+.popup__refresh-ava-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 560px) {
+  .popup__refresh-ava-btn {
+    width: calc(100% - 40px);
+    height: 40px;
+    margin: 31px 20px 30px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

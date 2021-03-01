@@ -1,0 +1,8 @@
+.popup__save_inactive {
+  background: #E5E5E5;
+}
+
+.popup__save_inactive:hover {
+  background: #E5E5E5;
+  cursor: default;
+}

@@ -1,0 +1,19 @@
+.profile__avatar-edit {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0);
+  background-image: url('../../../images/profile-edit.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profile__avatar-edit:hover {
+  z-index: 2;
+}

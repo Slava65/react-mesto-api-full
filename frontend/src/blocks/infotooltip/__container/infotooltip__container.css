@@ -1,0 +1,18 @@
+.infotooltip__container {
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 560px) {
+  .popup__container {
+    width: 240px;
+    left: calc((100% - 260px) / 2);
+  }
+}

@@ -1,0 +1,19 @@
+.profile__ava-block {
+  width: 120px;
+  height: 120px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  position: relative;
+}
+
+@media screen and (max-width: 715px) {
+  .profile__ava-block {
+    margin-bottom: 7px;
+    justify-self: center;
+  }
+}
+
+
