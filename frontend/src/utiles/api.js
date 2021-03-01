@@ -87,7 +87,7 @@ class Api {
 }
 
 export const api = new Api({
-  url: "api.slava65.students.nomoredomains.icu",
+  url: "http://api.slava65.students.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json"
   },

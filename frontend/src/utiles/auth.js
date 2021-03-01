@@ -39,7 +39,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  url: "api.slava65.students.nomoredomains.icu",
+  url: "http://api.slava65.students.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
   },
