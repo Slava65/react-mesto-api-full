@@ -156,7 +156,7 @@ function App() {
     api
       .setAva(avatar)
       .then((info) => {
-        setCurrentUser(info);
+        setCurrentUser(info.user);
         closeAllPopups();
       })
       .catch((err) => {

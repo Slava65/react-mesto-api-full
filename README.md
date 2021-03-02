@@ -35,4 +35,4 @@
 15. Хуки
 16. JSX
 17. HOC 
-Ссылка на проект:   http://localhost:3000
+Ссылка на проект:   http://slava65.students.nomoredomains.icu/
