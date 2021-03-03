@@ -65,7 +65,7 @@ function App() {
       .authorize(email, password)
       .then((res) => {
         let jwt = res.token;
-        console.log(jwt)
+        console.log(jwt);
         tokenCheck(jwt);
         localStorage.setItem("jwt", jwt);
         setEmail(email);
@@ -168,7 +168,7 @@ function App() {
     const isLiked = card.likes.some((id) => id === currentUser._id);
     api
       .setLike(card._id, isLiked)
-      .then(({data: newCard}) => {
+      .then(({ data: newCard }) => {
         const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
         setCards(newCards);
       })
@@ -226,8 +226,8 @@ function App() {
             onCardDelete={handleCardDelete}
             component={Main}
           />
-          <Footer />
         </Switch>
+        <Footer />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
