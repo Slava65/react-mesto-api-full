@@ -65,11 +65,11 @@ function App() {
       .authorize(email, password)
       .then((res) => {
         let jwt = res.token;
-        console.log(jwt);
         tokenCheck(jwt);
         localStorage.setItem("jwt", jwt);
         setEmail(email);
-        setCurrentUser({ email, password });
+        console.log(data);
+        setCurrentUser(data);
         history.push("/");
       })
       .catch((err) => {
