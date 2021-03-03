@@ -69,6 +69,7 @@ function App() {
         tokenCheck(jwt);
         localStorage.setItem("jwt", jwt);
         setEmail(email);
+        setCurrentUser({ email, password });
         history.push("/");
       })
       .catch((err) => {
