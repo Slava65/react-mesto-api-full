@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
 app.post('/signin', login);
-app.post('/signup', registerValidator, createUser);
+app.post('/signup', bodyParser, registerValidator, createUser);
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
 app.use('*', (req, res) => {
