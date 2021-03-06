@@ -182,7 +182,7 @@ function App() {
       .delCard(cardId)
       .then((data) => {
         console.log(data);
-        const newCards = cards.filter((c) => (c._id !== cardId ? c : ""));
+        const newCards = cards.filter((c) => (c._id !== card._id ? c : ""));
         setCards(newCards);
       })
       .catch((err) => {
