@@ -1,85 +1,100 @@
 const Card = require('../models/card');
+const BadRequestError = require('../errors/badRequestError');
+const NotFoundError = require('../errors/notFoundError');
+const ForbiddenError = require('../errors/forbiddenError');
 
-const getCards = (req, res) => {
+const getCards = (req, res, next) => {
   Card.find({})
     .then((cards) => res.send({ data: cards }))
-    .catch(() => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+    .catch(next);
 };
 
-const postCard = (req, res) => {
+const postCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;
   Card.create({ name, link, owner })
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return res.status(400).send({
-          message: 'Переданы некорректные данные в метод создания карточки',
-        });
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные в метод создания карточки',
+          ),
+        );
       }
-      return res.status(500).send({ message: 'На сервере произошла ошибка' });
+      return next(err);
     });
 };
 
-const deleteCard = (req, res) => {
+const deleteCard = (req, res, next) => {
   Card.findByIdAndRemove(req.params.cardId)
     .then((card) => {
-      if (card) {
-        return res.send({ data: card });
+      if (req.user._id !== card.owner) {
+        return next(
+          new ForbiddenError('Удалить карточку может только ее владелец'),
+        );
+      } if (!card) {
+        return next(new NotFoundError('Карточка не найдена'));
       }
-      return res.status(404).send({ message: 'Карточка не найдена' });
+      return res.send({ data: card });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        return res.status(400).send({
-          message: 'Переданы некорректные данные в метод удаления карточки',
-        });
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные в метод удаления карточки',
+          ),
+        );
       }
-      return res.status(500).send({ message: 'На сервере произошла ошибка' });
+      return next(err);
     });
 };
 
-const likeCard = (req, res) => {
+const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
     .then((card) => {
-      if (card) {
-        return res.send({ data: card });
+      if (!card) {
+        return next(new NotFoundError('Карточка не найдена'));
       }
-      return res.status(404).send({ message: 'Карточка не найдена' });
+      return res.send({ data: card });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        return res.status(400).send({
-          message: 'Переданы некорректные данные в метод постановки лайка',
-        });
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные в метод постановки лайка',
+          ),
+        );
       }
-      return res.status(500).send({ message: 'На сервере произошла ошибка' });
+      return next(err);
     });
 };
 
-const dislikeCard = (req, res) => {
+const dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: req.user._id } },
     { new: true },
   )
     .then((card) => {
-      if (card) {
-        return res.send({ data: card });
+      if (!card) {
+        return next(new NotFoundError('Карточка не найдена'));
       }
-      return res.status(404).send({ message: 'Карточка не найдена' });
+      return res.send({ data: card });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        return res.status(400).send({
-          message: 'Переданы некорректные данные в метод снятия лайка',
-        });
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные в метод удаления лайка',
+          ),
+        );
       }
-      return res.status(500).send({ message: 'На сервере произошла ошибка' });
+      return next(err);
     });
 };
 

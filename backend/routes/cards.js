@@ -14,8 +14,8 @@ cardRouter.post('/', postCard);
 
 cardRouter.delete('/:cardId', deleteCard);
 
-cardRouter.put('/likes/:cardId', likeCard);
+cardRouter.put('/:cardId/likes', likeCard);
 
-cardRouter.delete('/likes/:cardId', dislikeCard);
+cardRouter.delete('/:cardId/likes', dislikeCard);
 
-module.exports = cardRouter
+module.exports = cardRouter;

@@ -63,7 +63,7 @@ class Api {
 
   setLike(cardId, isLiked) {
     const method = isLiked ? "DELETE" : "PUT";
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method,
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
