@@ -37,7 +37,8 @@ const deleteCard = (req, res, next) => {
       if (!card) {
         return next(new NotFoundError('Карточка не найдена'));
       }
-      card.remove();
+      Card.deleteOne(card)
+        .then(() => res.send({ data: card }));
       return res.send({ data: card });
     })
     .catch((err) => {
