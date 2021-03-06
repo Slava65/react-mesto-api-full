@@ -46,7 +46,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     api
@@ -57,7 +57,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   function onLogin(data) {
     const { email, password } = data;
