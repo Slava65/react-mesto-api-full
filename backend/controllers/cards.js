@@ -29,7 +29,7 @@ const postCard = (req, res, next) => {
 const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .then((card) => {
-      if (req.user._id !== card.owner) {
+      if (!card.owner.equals(req.user._id)) {
         return next(
           new ForbiddenError('Удалить карточку может только ее владелец'),
         );
