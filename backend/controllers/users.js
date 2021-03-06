@@ -52,7 +52,7 @@ const createUser = (req, res, next) => {
     })
     .then((hash) => {
       const {
-        name, about, avatar,
+        name, about, avatar, email,
       } = req.body;
       const password = hash;
       return User.create({
