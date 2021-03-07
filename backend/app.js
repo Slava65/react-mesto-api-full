@@ -40,7 +40,9 @@ app.use((err, req, res, next) => {
   }
   return next(err);
 });
-app.use('*', (next) => next(new NotFoundError('Запрашиваемый ресурс не найден')));
+app.use('*', (req, res, next) => {
+  next(new NotFoundError('Запрашиваемый ресурс не найден'));
+});
 app.use(errorHandler);
 app.use(errorLogger);
 
