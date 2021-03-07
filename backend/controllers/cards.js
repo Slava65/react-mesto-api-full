@@ -29,13 +29,13 @@ const postCard = (req, res, next) => {
 const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .then((card) => {
+      if (!card) {
+        return next(new NotFoundError('Карточка не найдена'));
+      }
       if (!card.owner.equals(req.user._id)) {
         return next(
           new ForbiddenError('Удалить карточку может только ее владелец'),
         );
-      }
-      if (!card) {
-        return next(new NotFoundError('Карточка не найдена'));
       }
       Card.deleteOne(card)
         .then(() => res.send({ data: card }));
