@@ -39,7 +39,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  url: "https://api.slava65.students.nomoredomains.icu",
+  url: "https://mecto.fun/api",
   headers: {
     "Content-Type": "application/json",
   },

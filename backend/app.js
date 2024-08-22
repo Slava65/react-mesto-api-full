@@ -13,23 +13,24 @@ const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./errors/notFoundError');
 require('dotenv').config();
 
-const { PORT } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
-app.post('/signin', login);
-app.post('/signup', registerValidator, createUser);
-app.use('/users', auth, userRouter);
-app.use('/cards', auth, cardRouter);
+app.post('/api/signin', login);
+app.post('/api/signup', registerValidator, createUser);
+app.use('/api/users', auth, userRouter);
+app.use('/api/cards', auth, cardRouter);
 
 app.use((err, req, res, next) => {
   if (isCelebrateError(err)) {

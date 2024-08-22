@@ -51,8 +51,8 @@ function App() {
   React.useEffect(() => {
     api
       .getInfoUser()
-      .then((user) => {
-        setCurrentUser(user.data);
+      .then((res) => {
+        setCurrentUser(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -142,7 +142,7 @@ function App() {
 
   function handleUpdateUser(currentUser) {
     api
-      .editInfoUser(currentUser)
+      .updateUser(currentUser)
       .then((info) => {
         setCurrentUser(info.user);
         closeAllPopups();

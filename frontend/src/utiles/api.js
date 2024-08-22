@@ -87,7 +87,7 @@ class Api {
 }
 
 export const api = new Api({
-  url: "https://api.slava65.students.nomoredomains.icu",
+  url: "https://mecto.fun/api",
   headers: {
     "Content-Type": "application/json"
   },
