@@ -11,8 +11,4 @@
   margin-block-end: 0;
 }
 
-@media screen and (max-width: 950px) {
-  .header__email {
-    margin-left: calc(100% - 390px);
-  }
-}
+

@@ -1,3 +1,9 @@
 .header__info {
   display: flex;
 }
+
+@media screen and (max-width: 950px) {
+  .header__info {
+    margin-right: 27px;
+  }
+}
